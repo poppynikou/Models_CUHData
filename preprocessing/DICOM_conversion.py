@@ -31,7 +31,7 @@ hn_contournames_path = 'Contour_Naming.xlsx'
 
 
 
-ignore_patients = np.arange(16,47)
+ignore_patients = [15]
 ignore = ['CUH-UCL-02-0' + str("%.2d" % i) for i in ignore_patients]
 patients =  [str(folder) for folder in os.listdir(Base_path) if (folder.startswith('CUH-UCL')) and (folder not in ignore)]
 

@@ -8,7 +8,7 @@
 #$ -N DefRegs_GSTT
 #$ -pe smp 5
 #$ -R y 
-#$ -t 1-110
+#$ -t 1-1211
 
 #export lib path
 export LD_LIBRARY_PATH=/share/apps/gcc-8.3/lib64:$LD_LIBRARY_PATH

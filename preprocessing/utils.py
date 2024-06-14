@@ -156,7 +156,7 @@ def DICOM_CONVERT(Base_path, contour_names, associations, results_path, patient)
                 os.mkdir(structures_path)
 
             
-            #convert_OARs(dicom_Reader, contour_names, associations, structures_path)
+            convert_OARs(dicom_Reader, contour_names, associations, structures_path)
             convert_CTVs(dicom_Reader, structures_path)
 
 

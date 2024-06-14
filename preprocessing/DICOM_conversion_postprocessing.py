@@ -8,9 +8,9 @@ import numpy as np
 
 Base_path = 'D:/CUH_HN/DICOM/'
 
-ignore_patients = np.arange(16,47)
+ignore_patients = []#]
 ignore = ['CUH-UCL-02-0' + str("%.2d" % i) for i in ignore_patients]
-patients =  [str(folder) for folder in os.listdir(Base_path) if (folder.startswith('CUH-UCL')) and (folder not in ignore)]
+patients = [str(folder) for folder in os.listdir(Base_path) if (folder.startswith('CUH-UCL')) and (folder not in ignore)]
 
 
 for patient in patients:
@@ -36,7 +36,6 @@ for patient in patients:
         high_dose_CTV = np.zeros(shape = CT_shape, dtype=np.bool8)
         medium_dose_CTV = np.zeros(shape = CT_shape, dtype=np.bool8)
         low_dose_CTV = np.zeros(shape = CT_shape, dtype=np.bool8)
-
         
         for CTV_structure in CTV_structures:
             
@@ -91,13 +90,15 @@ for patient in patients:
             NewNiftiObj = nib.Nifti1Image(low_dose_CTV, structure_affine, structure_hdr)
             nib.save(NewNiftiObj, low_dose_CTV_path)
 
-        '''
+        
         
         structures = os.listdir(patient_path + '/' + str(CT_folder) + '/STRUCTURES/')
 
         for structure in structures:
 
-            if structure not in ['BIN_BRAINSTEM.nii.gz', 'BIN_CORD.nii.gz', 'BIN_CTV_HIGH.nii.gz', 'BIN_CTV_LOW.nii.gz', 'BIN_CTV_MEDIUM.nii.gz', 'BIN_PAROTIDL.nii.gz', 'BIN_PAROTIDR.nii.gz', 'BIN_BODY.nii.gz']:
+            if structure not in ['BIN_BRAINSTEM.nii.gz', 'BIN_CORD.nii.gz', 'BIN_CTV_HIGH.nii.gz', 'BIN_CTV_LOW.nii.gz', 'BIN_CTV_MEDIUM.nii.gz', 'BIN_PAROTIDL.nii.gz', 'BIN_PAROTIDR.nii.gz', 'BIN_BODY.nii.gz' \
+                                 'BIN_BRAINSTEM_OG.nii.gz', 'BIN_CORD_OG.nii.gz', 'BIN_CTV_HIGH_OG.nii.gz', 'BIN_CTV_LOW_OG.nii.gz', 'BIN_CTV_MEDIUM_OG.nii.gz', 'BIN_PAROTIDL_OG.nii.gz', 'BIN_PAROTIDR_OG.nii.gz', 'BIN_BODY_OG.nii.gz']:
 
                 os.remove(patient_path + '/' + str(CT_folder) + '/STRUCTURES/'+ str(structure))
-        '''
+        
+        
